@@ -1,334 +1,294 @@
-Program.cs
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 
 
 namespace Assignment1_Spring2021
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            
-            //Question 1
-            Console.WriteLine("Q1 : Enter the number of rows for the traingle:");
-            int n = Convert.ToInt32(Console.ReadLine());
-            printTriangle(n);
-            Console.WriteLine();
-
-            //Question 2:
-            Console.WriteLine("Q2 : Enter the number of terms in the Pell Series:");
-            int n2 = Convert.ToInt32(Console.ReadLine());
-            printPellSeries(n2);
-            Console.WriteLine();
-
-            //Question 3:
-            Console.WriteLine("Q3 : Enter the number to check if squareSums exist:");
-            int n3 = Convert.ToInt32(Console.ReadLine());
-            bool flag = squareSums(n3);
-            if (flag)
+      
+       
+            public static void Main()
             {
-                Console.WriteLine("Yes, the number can be expressed as a sum of           squares of 2 integers");
-            }
-            else
-            {
-                Console.WriteLine("No, the number cannot be expressed as a sum of squares of 2 integers");
-            }
+                // Question 1
+                Console.WriteLine("Q1:\n Enter number of rows for triangle:");
+                int n = Convert.ToInt32(Console.ReadLine());                            // Reads the input value for number of rows to be printed
+                Console.WriteLine();
+                PrintTriangle(n);                                                       // Calls the function to execute the triangle
+                Console.WriteLine("\n" + "* Triangle Printed" + "\n");
 
-            //Question 4:
-            int[] arr = { 3, 1, 4, 1, 5 };
-            Console.WriteLine("Q4: Enter the absolute difference to check");
-            int k = Convert.ToInt32(Console.ReadLine());
-            int n4 = diffPairs(arr, k);
-            Console.WriteLine("There exists {0} pairs with the given difference",n4);
+                //Question 2:
+                Console.WriteLine("Q2 : Enter the number of terms in the Pell Series:");
+                int n2 = Convert.ToInt32(Console.ReadLine());                                 // Reads the value for number of values to be printed in pell series
+                printPellSeries(n2);                                                          // Function to execute the program
+                Console.WriteLine();
+                Console.WriteLine("\n" + "These are the Pell Numbers" + "\n");
 
-            //Question 5:
-            List<string> emails = new List<string>();
-            emails.Add("dis.email + bull@usf.com");
-            emails.Add("dis.e.mail+bob.cathy@usf.com");
-            emails.Add("disemail+david@us.f.com");
-            int ans5 = UniqueEmails(emails);
-            Console.WriteLine("Q5");
-            Console.WriteLine("The number of unique emails is " + ans5);
-
-            //Quesiton 6:
-            string[,] paths = new string[,] { { "London", "New York" }, { "New York", "Tampa" },
-                                        { "Delhi", "London" } };
-            string destination = DestCity(paths);
-            Console.WriteLine("Q6");
-            Console.WriteLine("Destination city is " + destination);
-
-        }
-
-        /// <summary>
-        ///Print a pattern with n rows given n as input
-        ///n – number of rows for the pattern, integer (int)
-        ///This method prints a triangle pattern.
-        ///For example n = 5 will display the output as: 
-          ///     *
-          ///    ***
-          ///   *****
-         ///   *******
-         ///  *********
-         ///returns      : N/A
-         ///return type  : void
-         /// </summary>
-         /// <param name="n"></param>
-        private static void printTriangle(int n)
-        {
-            try
-            {
-                
-            } Console.WriteLine("Q1: Please enter the number of rows that you would like for the triangle:");
-            int a, b, num = 1;                         //variable declaration
-            num = n - 1;
-            for (b = 1; b <= n; b++)
-            {
-                //For Loop to create the space for the triangle 
-                for (a = 1; a <= num; a++) 
-                Console.Write(" ");
-                num--;
-                //End Region
-                for (a = 1; a <= 2 * b - 1; a++) //For Loop to print "*" in the spaces  
-                Console.Write("*");
-                Console.WriteLine();                    
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }
-
-        /// <summary>
-        ///<para>
-        ///In mathematics, the Pell numbers are an infinite sequence of integers.
-        ///The sequence of Pell numbers starts with 0 and 1, and then each Pell number is the sum of twice of the previous Pell number and 
-        ///the Pell number before that.:thus, 70 is the companion to 29, and 70 = 2 × 29 + 12 = 58 + 12. The first few terms of the sequence are :
-        ///0, 1, 2, 5, 12, 29, 70, 169, 408, 985, 2378, 5741, 13860,… 
-        ///Write a method that prints first n numbers of the Pell series
-        /// Returns : N/A
-        /// Return type: void
-        ///</para>
-        /// </summary>
-        /// <param name="n2"></param>
-        private static void printPellSeries(int n2)
-        {
-            try
-            {
-                int a, b;                               // variable declaration
-            for (a = 0; a * a <= n3; a++)                //For Loop which checks from 0 until it reaches a value less than or equal to vaiable n3
-                for (b = 0; b * b <= n3; b++)
-                    if (a * a + b * b == n3)             //if statement that checks whether the input is a sum of squares or not
-                    {
-                        return true;
-                    }
-            return false;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }
-
-
-        /// <summary>
-        ///Given a non-negative integer c, decide whether there're two integers a and b such that a^2 + b^2 = c.
-        ///For example:
-        ///Input: C = 5 will return the output: true (1*1 + 2*2 = 5)
-        ///Input: A = 3 will return the output : false
-        ///Input: A = 4 will return the output: true
-        ///Input: A = 1 will return the output : true
-        ///Note: You cannot use inbuilt Math Class functions.
-        /// </summary>
-        /// <param name="n3"></param>
-        /// <returns>True or False</returns>
-
-        private static bool squareSums(int n3)
-        {
-            try
-            {
-                int a, b;                               // variable declaration
-            for (a = 0; a * a <= n3; a++)                //For Loop which checks from 0 until it reaches a value less than or equal to variable n3
-                for (b = 0; b * b <= n3; b++)
-                    if (a * a + b * b == n3)             //if statement that checks whether the input is a sum of squares or not
-                    {
-                        return true;
-                    }
-                return false;
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Given an array of integers and an integer n, you need to find the number of unique
-        /// n-diff pairs in the array.Here a n-diff pair is defined as an integer pair (i, j),
-        ///where i and j are both numbers in the array and their absolute difference is n.
-        ///Example 1:
-        ///Input: [3, 1, 4, 1, 5], k = 2
-        ///Output: 2
-        ///Explanation: There are two 2-diff pairs in the array, (1, 3) and(3, 5).
-        ///Although we have two 1s in the input, we should only return the number of unique   
-        ///pairs.
-        ///Example 2:
-        ///Input:[1, 2, 3, 4, 5], k = 1
-        ///Output: 4
-        ///Explanation: There are four 1-diff pairs in the array, (1, 2), (2, 3), (3, 4) and
-        ///(4, 5).
-        ///Example 3:
-        ///Input: [1, 3, 1, 5, 4], k = 0
-        ///Output: 1
-        ///Explanation: There is one 0-diff pair in the array, (1, 1).
-        ///Note : The pairs(i, j) and(j, i) count as same.
-        /// </summary>
-        /// <param name="nums"></param>
-        /// <param name="k"></param>
-        /// <returns>Number of pairs in the array with the given number as difference</returns>
-        private static int diffPairs(int[] nums, int k)
-        {
-            try
-            {
-            if (k < 0)        //if statement which returns 0 if k is less than zero
-            return 0;
-
-            int final = 0;
-            System.Collections.Hashtable hash = new System.Collections.Hashtable();          //Creating a hash table called "hash" which will be used to store unique values
-
-            foreach (var item in nums)                      //Foreach statement which allows us to traverse through each item in the table
-                if (!hash.ContainsKey(item))
-                    hash.Add(item, 1);
+                // Question 3
+                Console.WriteLine("Q3 : Enter the number to check if squareSums exist:");
+                int n3 = Convert.ToInt32(Console.ReadLine());                                             // Reads the value for number to be checked for sum of squares
+                bool flag = squareSums(n3);                                                               // Using boolean type to check for sum of squares based on the input received
+                if (flag)                                                                                 // Conditional statement which prints output text based on the boolean value returned
+                {
+                    Console.WriteLine("Yes, the number can be expressed as a sum of squares of 2 integers");
+                }
                 else
-                    hash[item] = (int)hash[item] + 1;       //pairs that are already there are updated in the hash table
-            foreach (var item in hash.Keys)                 //Incremental counter which checks every pair whose difference k is 0
-                if (k == 0)
                 {
-                    if ((int)hash[item] > 1)
-                        final++;
+                    Console.WriteLine("No, the number cannot be expressed as a sum of squares of 2 integers");
                 }
-                else if (hash.ContainsKey((int)item + k))     //Incremental counter which checks every pair whose difference k is greater than 0
-                    final++;
 
-            return final;
+                //Question 4:
+                int[] arr = { 3, 1, 4, 1, 5 };
+                Console.WriteLine("Q4: Enter the absolute difference to check");
+                int k = Convert.ToInt32(Console.ReadLine());                                      //Reads input for difference between pairs to be checked
+                int n4 = diffPairs(arr, k);                                                       //Calling a function to check for the pairs that satisfy the given difference
+                Console.WriteLine("There exists {0} pairs with the given difference", n4);
+
+                // Question 5
+                List<string> emails = new List<string>();
+                emails.Add("dis.email + bull@usf.com");                             //Input for the emails to be checked 
+                emails.Add("dis.e.mail+bob.cathy@usf.com");
+                emails.Add("disemail+david@us.f.com");
+                int ans5 = UniqueEmails(emails);                                    //Function to check for number of unique emails in the given list
+                Console.WriteLine("Q5");
+                Console.WriteLine("The number of unique emails is " + ans5);
+
+                // Question 6
+                string[,] paths = new string[,] { { "London", "New York" }, { "New York", "Tampa" }, { "Delhi", "London" } };  // Input path to be checked for the destination city
+                string destination = DestCity(paths);                                                                          // Function called to check for the destination city
+                Console.WriteLine("Q6:\nFinding the destination city:\n");
+
+                Console.WriteLine("Destination city is " + destination);
+
+
+
             }
-            catch (Exception e)
-            {
 
-                Console.WriteLine("An error occured: " + e.Message);
-                throw;
-            }
+        //Question 1
 
-        }
-
-        /// <summary>
-        /// An Email has two parts, local name and domain name. 
-        /// Eg: rocky @usf.edu – local name : rocky, domain name : usf.edu
-        /// Besides lowercase letters, these emails may contain '.'s or '+'s.
-        /// If you add periods ('.') between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.
-        /// For example, "bulls.z@usf.com" and "bullsz@leetcode.com" forward to the same email address.  (Note that this rule does not apply for domain names.)
-        /// If you add a plus('+') in the local name, everything after the first plus sign will be ignored.This allows certain emails to be filtered, for example ro.cky+bulls @usf.com will be forwarded to rocky@email.com.  (Again, this rule does not apply for domain names.)
-        /// It is possible to use both of these rules at the same time.
-        /// Given a list of emails, we send one email to each address in the list.Return, how many different addresses actually receive mails?
-        /// Eg:
-        /// Input: ["dis.email+bull@usf.com","dis.e.mail+bob.cathy@usf.com","disemail+david@us.f.com"]
-        /// Output: 2
-        /// Explanation: "disemail@usf.com" and "disemail@us.f.com" actually receive mails
-        /// </summary>
-        /// <param name="emails"></param>
-        /// <returns>The number of unique emails in the given list</returns>
-
-        private static int UniqueEmails(List<string> emails)
+        private static void PrintTriangle(int n)                //Opening statement to define access type
         {
             try
             {
-                //Creating a list of unique domains
-                List<string> Domains = new List<string>();
-                for (int i = 0; i < emails.Length; i++)
+                // write your code here
+                Console.WriteLine("Q1 : Enter the number of rows for the triangle:");
+                int u, v, num = 1;                              //Initial variable declaration
+                num = n - 1;
+                for (v = 1; v <= n; v++)
                 {
-                    //Splitting the username and domain based on the symbol "@"
-                    string[] useridandDomain = emails[i].Split('@');
-
-                    //This stores the value of the domain in the domain variable
-                    string domain = useridandDomain [1];
-
-                    //This is used to test replacing of special characters
-string cleanUserid = useridandDomain[0].Replace(".", string.Empty);
-string cleanUserid = cleanUserid.Replace("+", string.Empty);
-
-                    //This adds each of three domain values to the list 
-                    Domains.Add(domain);
+                    //Printing region
+                    for (u = 1; u <= num; u++)              //For Loop to create printing space and triangle pattern
+                        Console.Write(" ");
+                    num--;
+                    //End Region
+                    for (u = 1; u <= 2 * v - 1; u++)        //For Loop to print "*" 
+                        Console.Write("*");
+                    Console.WriteLine();                    //Go to next line and start a new row
                 }
-
-                //This returns unique domains within the list
-                return Domains.Distinct().Count();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+
                 throw;
             }
 
-        }
+        }// -------------------------------------------------------------------------------------------------------//
 
-        /// <summary>
-        /// You are given the array paths, where paths[i] = [cityAi, cityBi] means there exists a direct path going from cityAi to cityBi. Return the destination city, that is, the city without any path outgoing to another city.
-        /// It is guaranteed that the graph of paths forms a line without any loop, therefore, there will be exactly one destination city.
-        /// Example 1:
-        /// Input: paths = [["London", "New York"], ["New York","Tampa"], ["Delhi","London"]]
-        /// Output: "Tampa" 
-        /// Explanation: Starting at "Delhi" city you will reach "Tampa" city which is the destination city.Your trip consist of: "Delhi" -> "London" -> "New York" -> "Tampa".
-        /// Input: paths = [["B","C"],["D","B"],["C","A"]]
-        /// Output: "A"
-        /// Explanation: All possible trips are: 
-        /// "D" -> "B" -> "C" -> "A". 
-        /// "B" -> "C" -> "A". 
-        /// "C" -> "A". 
-        /// "A". 
-        /// Clearly the destination city is "A".
-        /// </summary>
-        /// <param name="paths"></param>
-        /// <returns>The destination city string</returns>
-        private static string DestCity(string[,] paths)
-        {
-            try
-            {
-                ISet<string> fromSet = new HashSet<string>();
-            foreach (var a in paths)
-            {
-                fromSet.Add(a[0].ToString());
-            }
 
-            foreach (var a in paths) //for loop
-            {
-                if (!fromSet.Contains(a[1].ToString()))
+             
+                    //Question 2:
+                  
+
+                private static int printPellSeries(int n2)               //Opening statement to define access type
                 {
-                    return a[1].ToString();
-                }
-            }
+                    try
+                    {
+                        // write your code here
+                        if (n2 < 2)                                  //Conditional statement. If variable n2 is less than 2 then n2 will be returned to the user
+                            return n2;
+                        int x = 0;
+                        int y = 1;                                   //First two values in the Pell series
+                        Console.Write(x + " ");
+                        Console.Write(" " + y);                      //Printing the first two values of the series
+                        int z;                                       // Variable for third value in the series
+                        for (int i = 3; i <= n2; i++)                // For loop is initiated here in which a counter is set starting at value 3 and increases by 1 for the next value in the counter
+                        {
+                            z = 2 * y + x;                           //Formula for "zth" term in the Pell series
+                            x = y;                                   //The next two values in the Pell series become reassigned to x and y
+                            y = z;
+                            Console.Write(" " + y);
+                        }
+                        return y;
+                    }
+                    catch (Exception)
+                    {
 
-            return "";
+                        throw;
+                    }
+
+
+                }
+
+               // -------------------------------------------------------------------------------------------------------//
+
+                    // Question 3
+                   
+
+                private static bool squareSums(int A)                    //Opening statement to define access type
+                {
+                    try
+                    {
+                        // write your code here\
+                        int u, v;                                    //Initiating variables
+                        for (u = 0; u * u <= A; u++)                //For Loop starts checking from 0 until it is reaches a value less than or equal to vaiable n3
+                            for (v = 0; v * v <= A; v++)
+                                if (u * u + v * v == A)             //Conditional statement to check whether the value input by user is a sum of squares or not
+                                {
+                                    return true;
+                                }
+                        return false;
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+                }
+
+                //---------------------------------------------------------------------------------------------------------//
+                    //Question 4:
+
+
+                private static int diffPairs(int[] nums, int k)           //Intitial statement to define access type and integer variables
+                {
+                    try
+                    {
+                        // write your code here.
+                        if (k < 0)                                     //Conditional statement which returns 0 if difference k is less than zero
+                            return 0;
+
+                        int final = 0;
+                        System.Collections.Hashtable hash = new System.Collections.Hashtable();          //Initiating a hash table called "hash" which stores unique values
+
+                        foreach (var item in nums)                      //Foreach statement allows us to traverse through each item in the table
+                            if (!hash.ContainsKey(item))
+                                hash.Add(item, 1);
+                            else
+                                hash[item] = (int)hash[item] + 1;       //Existing pairs are updated in the hash table
+
+                        foreach (var item in hash.Keys)                 //Incremental counter to check every pair such that their difference k is 0
+                            if (k == 0)
+                            {
+                                if ((int)hash[item] > 1)
+                                    final++;
+                            }
+                            else if (hash.ContainsKey((int)item + k))     //Incremental counter to check every pair such that their difference k is greater than 0
+                                final++;
+
+                        return final;
+                    }
+                    catch (Exception e)
+                    {
+
+                        Console.WriteLine("An error occured: " + e.Message);
+                        throw;
+                    }
+
+                }
+
+                //-----------------------------------------------------------------------------------------------------------//
+                    // Question 5
+
+                /// <summary>
+                /// Static method to determine the unique email values for the respective email group
+                /// </summary>
+                private static int UniqueEmails(List<string> emails)
+                {
+                    try
+                    {
+                        List<string> Unique_Emails = new List<string>();
+
+                foreach (string email in emails)                                                // Using foreach to check each email in the list
+                {
+                    string givenEmail = "";
+
+                    foreach (char c in email)
+                    {
+                        if (c == '@' || c == '+')                                               // conditional statement which causes everything after + and @ characters to be skipped
+                        {
+                            break;
+                        }
+                        if (c == '.')                                                          // conditional statement to ignore "." characters
+                        {
+                            continue;
+                        }
+                        givenEmail += c;                                                      
+                    }
+
+
+                    int atIndex = email.IndexOf('@');                                         // combines the domain name part with "@" character
+                    givenEmail = givenEmail.Trim();
+                    givenEmail += email.Substring(atIndex);
+                    
+                    if (!Unique_Emails.Contains(givenEmail))                           // Ignores emails added earlier
+                    {
+                        Unique_Emails.Add(givenEmail);
+                    }
+                }
+                return Unique_Emails.Count;
+            }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("User needs to enter a valid input " + e.Message);
+                        throw;
+                    }
+
+                }
+
+                //-------------------------------------------------------------------------------------------------------//
+                    // Question 6
+
+                private static string DestCity(string[,] paths)                 //Intitial statement to define access type and variable "paths" which the all possible continuous paths
+                {
+                    try
+                    {
+                for (int v = 0; v < paths.GetLength(0); v++)
+                {
+                    int b = 0;
+                    for (int u = 0; u < paths.GetLength(0); u++)
+                    {
+                        if (paths[u, 0] == paths[v, 1])                             // Conditional statements checks for starting and ending point cities in the path and removes them when they are both the same city
+                        {
+                            b = 1;
+                            break;
+
+                        }
+                    }
+                    if (b == 0)
+                    {
+                        return paths[v, 1];                                       // Returns the destination city to the user
+
+                    }
+                }
                 return "";
 
-
             }
             catch (Exception)
-            {
+                    {
 
-                throw;
-            }
+                        throw;
+                    }
 
+                }
 
-        }
+            
 
 
     }
-}
 
 
+}  
