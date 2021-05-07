@@ -45,11 +45,11 @@ namespace Assignment2
             string s62 = "sunny";
             if (Isomorphic(s61, s62))
             {
-                Console.WriteLine("Yes the two strings are Isomorphic");
+                Console.WriteLine("Yes the two strings provided are Isomorphic");
             }
             else
             {
-                Console.WriteLine("No, the given strings are not Isomorphic");
+                Console.WriteLine("No, the following given strings are not Isomorphic");
             }
             Console.WriteLine();
 
@@ -124,8 +124,7 @@ namespace Assignment2
                 int a = 0;
                 int b = n;
 
-                //Using for loop and incrementing i for adding two elements in each iteration. 
-                 // a is being incremented for x's and b is incremented for y's 
+                //We are using a for loop and incrementing i for adding two elements in each iteration
                 for (int i = 0; i < 2 * n; i += 2)
                 {
                     arr[i] = nums[a];
@@ -133,7 +132,7 @@ namespace Assignment2
                     a++;
                     b++;
                 }
-                //To print a new array as x1y1,x2y2,x3y3 and so on
+                //To print a new array as x1y1,x2y2,x3y3 etc.
                 foreach (var l in arr)
                 {
                     Console.Write(l + " ");
@@ -163,7 +162,7 @@ namespace Assignment2
             {
                 int counter = 0, l = 0;
 
-                //Iterating through the array. When it encounters a non-zero element, place it from start of the array. Also fetch the count of zeros//
+                //This iterates through the array. When it encounters a non-zero element, it is placed from the start of the array. Also fetches the count of zeros
                 for (int i = 0; i < ar2.Length; i++)
                 {
                     if (ar2[i] == 0)
@@ -174,12 +173,11 @@ namespace Assignment2
                         l++;
                     }
                 }
-                //Adding 'counter' number of Zeroes at the end of the array
                 for (int i = ar2.Length - counter; i < ar2.Length; i++)
                 {
                     ar2[i] = 0;
                 }
-                //Printing the final output after moving all zeroes
+                //This prints the final output after moving all zeroes
                 foreach (var c in ar2)
                 {
                     Console.Write(c + " ");
@@ -228,8 +226,7 @@ namespace Assignment2
                 //Introducing a For loop to iterate through dictionary     
                 for (int i = 0; i < nums.Length; i++)
                 {
-                    //Use if..else statement. If the element already exists in array increase the value by 1 
-                    //else add the element to the dictionary
+                    //Use if..else statement. If the element already exists in array increase the value by 1 or else add the element to the dictionary
                     if (pairs.ContainsKey(nums[i]))
                     {
                         pairs[nums[i]]++;
@@ -240,15 +237,13 @@ namespace Assignment2
                         pairs.Add(nums[i], counter);
                     }
                 }
-                //To Calculate the total number of pairs
-                //We get the number of cool pairs per element are n*(n-1)/2
-                //Adding above numbers to sum 
+                //This calculates the total number of pairs and we get the number of cool pairs per element are n*(n-1)/2
                 foreach (var m in pairs)
                 {
                     int n = m.Value;
                     sum += n * (n - 1) / 2;
                 }
-                //Print the sum of all such pairs
+                //This prints the sum of all such pairs
                 Console.WriteLine(sum);
             }
             catch (Exception)
@@ -280,13 +275,11 @@ namespace Assignment2
             try
             {
                 int s = 0, t = 0;
-                //We create a dictionary to store the difference between target and the current value
                 Dictionary<int, int> difference = new Dictionary<int, int>();
                 for (int i = 0; i < nums.Length; i++)
                 {
-                    //We first iterate through the array. Then add the difference between target and current value in case it's not already present
-                    //Adding the position of the current element as a value
-                    //If the element already exists then we need to do nothing. The current i and it's corresponding value in dictionary is the output
+                    //We first iterate through the array. Then add the difference between target and current value if it's not already present then we adding the position of the current element as a value
+                    //If the element already exists then we need to do nothing and the current i and it's corresponding value in dictionary is the output
                     if (difference.ContainsKey(nums[i]))
                     {
                         s = difference[nums[i]];
@@ -328,21 +321,21 @@ namespace Assignment2
         {
             try
             {
-                // Make sure that the input is valid
+                // This is to make sure that the input is valid
                 if (indices.Length != s.Length)
                 {
                     Console.WriteLine("Please enter a valid input");
                     return;
                 }
-                //Creating a new array for the shuffled string
+                //This creates a new array for the shuffled string
 
                 char[] newString = new char[s.Length];
                 for (int i = 0; i < s.Length; i++)
                 {
-                    //placing s[i] in new array newStr with index as indices[i]
+                    //This places s[i] in new array newStr with index as indices[i]
                     newString[indices[i]] = s[i];
                 }
-                //priting output char array
+                //Prints output char array
                 foreach (var a in newString)
                 {
                     Console.Write(a);
@@ -379,12 +372,12 @@ namespace Assignment2
         {
             try
             {
-                // If statement to test whether the two string have the same length. If they are different then they are not isomorphic
+                // If statement is to test whether the two string have the same length. If they are different then they are not isomorphic
                 if (s1.Length != s2.Length)
                 {
                     return false;
                 }
-                //Initialize a dictionary to check for the similarity of characters in the input strings
+                //Here we initialize a dictionary to check for the similarity of characters in the input strings
                 Dictionary<char, char> dict = new Dictionary<char, char>();
                 // Using a for loop to parse through the input strings to check whether both the strings are similar
                 for (int i = 0; i < s1.Length; i++)
@@ -392,13 +385,13 @@ namespace Assignment2
                     // Using if...else statement. If the dictionary contains the key then compare it with the corresponding value of the character at the same position from the second string
                     if (dict.ContainsKey(s1[i]))
                     {
-                        // If dictionary value from first string doesn't match with the second string's character at the corresponding position then retrun false 
+                        // If dictionary value from first string doesn't match with the second string's character at the corresponding position then we retrun false 
                         if (dict[s1[i]] != s2[i])
                         {
                             return false;
                         }
                     }
-                    // If dictionary doesn't contain the first string character at that corresponding position, add it to the dictionary
+                    // If dictionary doesn't contain the first string character at that corresponding position, then we add it to the dictionary
                     else
                     {
                         dict.Add(s1[i], s2[i]);
@@ -406,12 +399,12 @@ namespace Assignment2
                 }
                 // We create a hash set to store all the dictionary values or the frequency of the dictionary keys in it 
                 HashSet<char> set = new HashSet<char>(dict.Values);
-                // If statement to check whether the total count of the values in the hash set and the dictionary values are identical. If it is isomorphic then we return true
+                // If statement checks whether the total count of the values in the hash set and the dictionary values are identical. If it is isomorphic then we return true
                 if (set.Count == dict.Values.Count)
                 {
                     return true;
                 }
-                // In any other case we return false
+                // Any other case we return false
                 return false;
             }
             catch (Exception)
@@ -455,7 +448,7 @@ namespace Assignment2
                     {
                         score[items[i, 0]].Add((items[i, 1]));
                     }
-                    //if not found, adds ID and score from items list to dictionary 
+                    //If it is not found, then it adds ID and score from items list to dictionary 
                     else
                     {
                         score.Add(items[i, 0], new List<int>());
@@ -465,9 +458,9 @@ namespace Assignment2
                 //Looping through dictionary
                 foreach (var a in score)
                 {
-                    //sorting the values in the dictionary i.e, list of marks
+                    //This sorts the values in the dictionary i.e, list of marks
                     a.Value.Sort();
-                    //reverse so that we get descending order
+                    //This is in reverse so that we get descending order
                     a.Value.Reverse();
                 }
                 foreach (var b in score)
@@ -475,16 +468,16 @@ namespace Assignment2
                     int sum = 0;
                     for (int i = 0; i < 5; i++)
                     {
-                        //adding first 5 maximum marks for every student
+                        // This adds first 5 maximum marks for every student
                         sum += b.Value[i];
                     }
-                    //placing that sum in value(1) in the dictionary list
+                    // This places that sum in value(1) in the dictionary list
                     b.Value[1] = sum;
                 }
                 Console.Write("[");
                 foreach (var b in score)
                 {
-                    //printing average of the sum
+                    //This prints average of the sum
                     Console.Write("[{0},{1}]", b.Key, b.Value[1] / 5);
                 }
                 Console.Write("]");
@@ -528,10 +521,10 @@ namespace Assignment2
                 int s = n;
                 Dictionary<int, int> dict = new Dictionary<int, int>();
 
-                //the loop runs until n=sum=1 is satisfied
+                //This loop runs until n=sum=1 is satisfied
                 while (n != 1)
                 {
-                    //squaring the digits and adding to the sum
+                    //This squares the digits and adding to the sum
                     while (n != 0)
                     {
                         sum += (n % 10) * (n % 10);
@@ -539,7 +532,7 @@ namespace Assignment2
 
                     }
                     n = sum;
-                    //If sum is in dictionary or the starting number = sum, then it is not a Happy number. It moves on to the next one
+                    //If the sum is in dictionary or if the starting number = sum, then it is not a Happy number. It moves on to the next one to check if it is a happy number
                     if (dict.ContainsKey(sum) || sum == s)
                         return false;
                     dict.Add(sum, 1);
@@ -575,10 +568,10 @@ namespace Assignment2
         {
             try
             {
-                //Initializing maxProfit for profit
+                //This initializes maxProfit for profit
                 int maxProfit = 0;
 
-                //Initializing minimum price of stock on a particular day.
+                //This is for initializing minimum price of stock on a particular day.
                 int stockPrice = prices[0];
                 for (int i = 1; i < prices.Length; i++)
                 {
@@ -586,7 +579,7 @@ namespace Assignment2
                     stockPrice = Math.Min(stockPrice, prices[i]);
 
 
-                    //Math.Max of profit between previous maximum and (prices[i] - stockPrice)
+                    //Math.Max of profit between the previous maximum and (prices[i] - stockPrice)
                     maxProfit = Math.Max(maxProfit, (prices[i] - stockPrice));
                 }
                 return maxProfit;
@@ -626,17 +619,17 @@ namespace Assignment2
                 int a = 1, b = 2;
                 int combinations = 0;
 
-                //In case there is only only one possible way to climb the stairs
+                //This is in case there is only 1 possible way to climb the stairs
                 if (steps == 1)
                     Console.WriteLine(1);
 
 
-                //In case there are only 2 possible ways to climb the stairs
+                //This is in case there are only 2 possible ways to climb the stairs
                 if (steps == 2)
                     Console.WriteLine(2);
                 else
                 {
-                    //Adding the previous 2 elements will fetch the no. of possible ways to climb the stairs 
+                    //This adds the previous 2 elements and will get the number of possible ways to climb the stairs 
                     for (int i = 2; i < steps; i++)
                     {
                         combinations = a + b;
@@ -645,7 +638,7 @@ namespace Assignment2
                     }
                 }
 
-                //print no. of ways as output
+                //This prints the number of ways as output
                 Console.WriteLine(combinations);
 
             }
